@@ -1008,8 +1008,6 @@ class AdminController extends Controller {
                       {tr('Off')}
                     </label>
                   </div>
-<<<<<<< HEAD
-=======
                 </header>
                 <div class="fb-column-container">
                   <div class="col col-pad col-1-4">
@@ -1026,9 +1024,7 @@ class AdminController extends Controller {
               </section>
               <section class="admin-box">
                 <header class="admin-box-header">
-<<<<<<< HEAD
                   <h3>{tr('Language')}</h3>
->>>>>>> e880251... Updated LiveSync Security (#494)
                 </header>
                 <div class="fb-column-container">
                   <div class="col col-pad col-1-4">
@@ -1045,8 +1041,6 @@ class AdminController extends Controller {
               </section>
               <section class="admin-box">
                 <header class="admin-box-header">
-=======
->>>>>>> 51e06a7... Merge Deconflict of /dev and /master (#503)
                   <h3>{tr('Internationalization')}</h3>
                 </header>
                 <div class="fb-column-container">
