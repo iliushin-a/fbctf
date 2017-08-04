@@ -177,10 +177,6 @@ class AdminController extends Controller {
       $select->appendChild(
         <option
           class="fb--conf--password_type"
-=======
-        <option
-          class="fb--conf--password_type"
->>>>>>> 35c5ec3... Fixed #82 (Level Bonus not reset).
           value={strval($type->getField())}
           selected={($type->getField() === $config->getField())}>
           {$type->getDescription()}
