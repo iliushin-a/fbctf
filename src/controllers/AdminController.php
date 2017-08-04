@@ -1688,6 +1688,27 @@ class AdminController extends Controller {
         $quiz_type = " - Multiple Choice";
       }
 
+      $quiz_answer_name = "answer".strval($quiz->getId());
+
+      $quiz_short_answer_name =
+        'fb--quiz--level-'.strval($quiz->getId()).'-short_answer';
+      $quiz_short_answer_on_id =
+        'fb--quiz--level-'.strval($quiz->getId()).'-short_answer--on';
+      $quiz_short_answer_off_id =
+        'fb--quiz--level-'.strval($quiz->getId()).'-short_answer--off';
+      $quiz_short_answer_on = ($quiz->getIsShortAnswer());
+      $quiz_short_answer_off = !($quiz->getIsShortAnswer());
+      if ($quiz_short_answer_on) {
+        //hide the multiple choice answer boxes
+        $multiple_choice_class = "form-el fb-column-container col-gutters completely-hidden";
+        $quiz_type = " - Short Answer";
+      }
+      else {
+        // display them
+        $multiple_choice_class = "form-el fb-column-container col-gutters";
+        $quiz_type = " - Multiple Choice";
+      }
+
       $countries_select =
         await $this->genGenerateCountriesSelect($quiz->getEntityId());
 
