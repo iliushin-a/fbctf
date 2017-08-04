@@ -495,11 +495,6 @@ class AdminController extends Controller {
           <img
             id="custom-logo-image"
             class="icon--badge"
-=======
-          <img
-            id="custom-logo-image"
-            class="icon--badge"
->>>>>>> 35c5ec3... Fixed #82 (Level Bonus not reset).
             src={$custom_logo_image->getValue()}
           />
           <br/>
