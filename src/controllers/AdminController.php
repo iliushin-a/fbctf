@@ -335,7 +335,7 @@ class AdminController extends Controller {
       'livesync' => Configuration::gen('livesync'),
       'livesync_auth_key' => Configuration::gen('livesync_auth_key'),
       'custom_logo' => Configuration::gen('custom_logo'),
-      'custom_text' => Configuration::gen('custom_text'),
+      'custom_text' => Configuration::gen('custom_org'),
       'custom_logo_image' => Configuration::gen('custom_logo_image'),
     };
 
