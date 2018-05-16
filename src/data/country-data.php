@@ -78,8 +78,10 @@ class CountryDataController extends DataController {
           // Has this team requested this hint or scored this level before?
           if ($hint || $score) {
             $hint_cost = 0;
-          } else {
-            $hint_cost = $level->getPenalty();
+          }
+          // Has this team scored this level before?
+          if ($score) {
+            $hint_cost = 0;
           }
           $hint = ($hint_cost === 0) ? $level->getHint() : 'yes';
         }
@@ -95,12 +97,36 @@ class CountryDataController extends DataController {
       } else {
         $owner = 'Uncaptured';
       }
+
+      //All possible Answer choices for this question
+      $choiceA = "";
+      $choiceB = "";
+      $choiceC = "";
+      $choiceD = "";
+      if($level->getIsShortAnswer()){
+        $choiceA = "Short Answer";
+        $choiceB = "Short Answer";
+        $choiceC = "Short Answer";
+        $choiceD = "Short Answer";
+      }
+      else{
+        $random = mt_rand(0,3);
+        $choiceA = $level->getAnswerChoice1();
+        $choiceB = $level->getAnswerChoice2();
+        $choiceC = $level->getAnswerChoice3();
+        $choiceD = $level->getAnswerChoice4();
+      }
+
+      //randomize order
+      $choices = array($choiceA,$choiceB,$choiceC,$choiceD);
+      shuffle($choices);
+
       $country_data = (object) array(
         'level_id' => $level->getId(),
         'title' => $level->getTitle(),
         'intro' => $level->getDescription(),
         'type' => $level->getType(),
-        'points' => $level->getPoints(),
+        'points' => $points,
         'bonus' => $level->getBonus(),
         'category' => $category->getCategory(),
         'owner' => $owner,
@@ -109,6 +135,17 @@ class CountryDataController extends DataController {
         'hint_cost' => $hint_cost,
         'attachments' => $attachments_list,
         'links' => $links_list,
+        'wrong_answer_penalty' => $wrong_answer_penalty,
+        'numIncorrectGuesses' => $numIncorrectGuesses,
+        'isShortAnswer' => $level->getIsShortAnswer(),
+        'shuffledChoiceA' => $choices[0],
+        'shuffledChoiceB' => $choices[1],
+        'shuffledChoiceC' => $choices[2],
+        'shuffledChoiceD' => $choices[3],
+        'choiceA' => $choiceA,
+        'choiceB' => $choiceB,
+        'choiceC' => $choiceC,
+        'choiceD' => $choiceD,
       );
       /* HH_FIXME[1002] */
       /* HH_FIXME[2011] */
